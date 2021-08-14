@@ -1,0 +1,57 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
+
+	<body>
+		<main th:object="${order}">
+			<div class="panel panel-info mt-2 container" style=" margin-top: 20px;">
+				<div class="panel-heading text-center mt-5"><label class="pull-center" style="font-size: 30px;">
+					ORDER DETAILS
+				</label></div>
+				<div class="panel-body">
+					<div class="">
+						<div class="form-group col-sm-4">
+							<label for="">Mã đơn hàng</label>
+							<input th:field="*{id}" class="form-group" readonly>
+						</div>
+						<div class="form-group col-sm-4">
+							<label for="">Người nhận</label>
+							<input th:field="*{account.username}" class="form-group" readonly>
+						</div>
+						<div class="form-group col-sm-4">
+							<label for="">Ngày đặt</label><br>
+							<input th:field="*{createDate}" class="form-group" readonly>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-sm-12">
+							<label for="">Địa chỉ nhận:</label>
+							<textarea name="" th:field="*{address}" class="form-control" readonly cols="75"
+								rows="3"></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="card mt-3 container">
+				<h5 class="card-header">Danh sách đơn hàng</h5>
+				<div class="card-body p-0">
+					<div class="card mt-3" th:each="detail: *{orderDetails}" th:object = "${detail}">
+						<div class="card-header">
+							<strong>ID: ##[[*{product.id}]]</strong>
+						</div>
+						<div class="card-body row">
+							<div class="col-md-3"><img th:src="@{|/assets/images/*{product.image}|}" class="card-img-top"
+									alt="..." style="width: 65%; height: 150px;"></div>
+							<div class="col-md-9">
+								<strong>Tên sản phẩm: </strong>[[*{product.name}]] </br>
+								<strong>Giá sản phẩm: </strong><a style="color: red;">$[[*{#numbers.formatDecimal(price, 0, 'COMMA', 2, 'POINT')}]]</a><br>
+								Số lượng: [[*{quantity}]]
+								<div class="text-right"><label for="">Tổng tiền: $[[*{#numbers.formatDecimal(price*quantity, 0, 'COMMA', 2, 'POINT')}]]</label></div>
+							</div>
+						</div>
+						<hr>
+					</div>					
+				</div>				
+			</div>
+		</main>
+	</body>
+</html>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
+
+<body>
+	<main>
+		<div th:replace="~{/cart/view :: shopping-cart}"></div>
+		<div class="section">
+			<div class="row container">
+				<div class="card col-md-7">
+					<h5 class="card-header text-center">FORM THANH TOÁN</h5>
+					<div class="card-body mt-5">
+						<div class="row">
+							<div class="form-group col-sm-6">
+								<label for="">Người nhận: </label>
+								<a id="username">[[${#request.remoteUser}]]</a>
+							</div>
+							<div class="form-group col-sm-6">
+								<label for="">Ngày đặt: </label> {{order.createDate | date : 'dd-MM-yyyy'}}
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label for="">Địa chỉ:</label><br>
+								<textarea name="" ng-model="order.address" id="" cols="75" rows="3"></textarea>
+							</div>
+						</div>
+						<div class="pull-right">
+							<button ng-click="order.purchase()" class="btn btn-success">Hoàn tất thanh toán</button>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-5"></div>
+			</div>
+		</div>
+	</main>
+</body>
+
+</html>

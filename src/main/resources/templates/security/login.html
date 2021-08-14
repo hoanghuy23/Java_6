@@ -1,0 +1,90 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/css/login.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- /css files -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.css">
+
+    <!-- online fonts -->
+    <link href="//fonts.googleapis.com/css?family=Sirin+Stencil" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/eaa729be91.js"
+	crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+<div class="bg-info" style="height: 750px;">
+    <!-- Container containing all contents -->
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-9 col-lg-7 col-xl-6 mt-5">
+                <!-- White Container -->
+                <div class="container bg-white rounded mt-2 mb-2 px-0">
+                    <!-- Main Heading -->
+                    <div class="row justify-content-center align-items-center pt-3">
+                        <h1><strong>Login</strong></h1>
+                    </div>
+                    <div class="pt-3 pb-3">
+                        <i class="ml-5" style="color: red" th:text="${message}"></i>
+                        <form class="form-horizontal" th:action="@{/security/login}" method="post">
+                            <!-- User Name Input -->
+                            <div class="form-group row justify-content-center px-3">
+                                <div class="col-9 px-0"> <input type="text" name="username" placeholder="User name" class="form-control border-info placeicon"> </div>
+                            </div> <!-- Password Input -->
+                            <div class="form-group row justify-content-center px-3">
+                                <div class="col-9 px-0"> <input type="password" name="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" class="form-control border-info placeicon"> </div>
+                            </div> <!-- CheckBox Remember Me-->
+                            <div class="form-group row justify-content-center px-3">
+                                <div class="col-9">
+                                    <div class="row">
+                                        <div class="col-6 px-0">
+                                            <div class="custom-control custom-checkbox mb-3"> <input id="customCheck1" type="checkbox" name="remember-me" class="custom-control-input checkbox-muted"> <label for="customCheck1" class="custom-control-label text-muted">Remember Me</label> </div>
+                                        </div> <!-- Forgot Password Link -->
+                                        <div class="col-6 px-0 text-right"> <span><a href="#" class="text-danger"><b>Forgot Password?</b></a></span> </div>
+                                    </div>
+                                </div>
+                            </div> <!-- Log in Button -->
+                            <div class="form-group row justify-content-center">
+                                <button class="btn btn-success w-25">Login</button>
+                            </div>
+                        </form>
+                    </div> <!-- Alternative Login -->
+                    <div class="mx-0 px-0 bg-light">
+                        <div class="pt-4">
+                            <div class="row justify-content-center pt-3">
+                                <h3><strong>Login</strong></h3>
+                            </div>
+                            <div class="row justify-content-center">
+                                <h5>With your social media account</h5>
+                            </div> <!-- Social Media Login buttons -->
+                            <div class="row justify-content-center pt-4">
+                                <div class="col-10">
+                                    <div class="row justify-content-center">
+                                        <!-- Twitter Connect -->
+                                        <div class="col-7 col-sm-4 px-1 pb-1"> <a href="/home/product" class="btn btn-block btn-social btn-twitter"> <span class="fa fa-home"></span> Trang chủ </a> </div> <!-- Facebook Connect -->
+                                        <div class="col-7 col-sm-4 px-1 pb-1"> <a href="#" class="btn btn-block btn-social btn-facebook"> <span class="fa fa-facebook"></span> Facebook </a> </div> <!-- Google Connect -->
+                                        <div class="col-7 col-sm-4 px-1 pb-1"> <a href="#" class="btn btn-block btn-social btn-google"> <span class="fa fa-google-plus"></span> Google+ </a> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- Horizontal Line -->
+                        <div class="px-4 pt-5">
+                            <hr>
+                        </div> <!-- Register Now -->
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

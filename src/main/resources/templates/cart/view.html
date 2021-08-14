@@ -1,0 +1,80 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
+
+<head>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+		integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+</head>
+
+<body>
+	<main>
+		<div class="section" th:fragment="shopping-cart">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+
+					<div class="col-md-7">
+						<table class="table">
+							<thead>
+								<tr>
+									<th scope="col" style="width: 700px;">Hình</th>
+									<th scope="col" style="width: 450px;">Tên sản phẩm</th>
+									<th scope="col" style="width: 200px;">Giá</th>
+									<th scope="col" style="width: 60px;">Số lượng</th>
+									<th scope="col" style="width: 200px;">Tổng tiền</th>
+									<th scope="col"></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="item in cart.items">
+									<th scope="row"><img th:src="@{/assets/images/{{item.image}}}" alt="" style="width: 40%; height: 70px;"></th>
+									<td>{{item.name}}</td>
+									<td>$ {{item.price | number: 2}}</td>
+									<td><input type="number" ng-change="cart.saveToLocalStorage()" name="" ng-model="item.qty" min="1" style="width: 60px;"></td>
+									<td>$ {{item.price*item.qty | number: 2}}</td>
+									<td><button ng-click="cart.remove(item.id)" type="button" class="btn btn-danger"><i class="fas fa-trash"></i></button></td>
+								</tr>								
+							</tbody>
+						</table>
+						<a type="button" th:href="@{|/home/product|}" class="btn btn-primary">&leftarrow; Mua tiếp</a>
+						<button type="button" ng-click="cart.clear()" class="btn btn-secondary"><i class="fas fa-redo-alt"></i> Xóa hết</button>
+					</div>
+
+					<!-- Order Details -->
+					<div class="col-md-5 order-details">
+						<div class="section-title text-center">
+							<h3 class="title">Hóa đơn của bạn</h3>
+						</div>
+						<div class="order-summary">
+							<div class="order-col">
+								<div><strong>Sản phẩm</strong></div>
+								<div><strong>Thành tiền</strong></div>
+							</div>
+							<div class="order-products">
+								<div class="order-col" ng-repeat="item in cart.items">
+									<div>{{item.qty}}x {{item.name}}</div>
+									<div>$ {{item.price*item.qty | number: 2}}</div>
+								</div>
+							</div>
+							<div class="order-col">
+								<div>Phí vấn chuyển</div>
+								<div><strong>FREE</strong></div>
+							</div>
+							<div class="order-col">
+								<div><strong>Tổng tiền</strong></div>
+								<div><strong class="order-total">$ {{cart.amount | number: 2}}</strong></div>
+							</div>
+						</div>						
+						<a th:href="@{/order/checkout}" class="primary-btn order-submit"><i class="fas fa-check-double"></i> Thanh toán</a>
+					</div>
+					<!-- /Order Details -->
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+	</main>
+</body>
+
+</html>
